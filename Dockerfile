@@ -1,5 +1,10 @@
 FROM centos:latest
 
+RUN localedef -f UTF-8 -i en_US en_US.UTF-8
+ENV LANG="en_US.UTF-8" \
+    LANGUAGE="en_US:en" \
+    LC_ALL="en_US.UTF-8"
+
 RUN yum -y update && yum clean all && yum -y install epel-release && yum install -y python-pip git vim sudo
 RUN pip install --upgrade pip
 RUN pip install ansible
