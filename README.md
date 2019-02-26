@@ -28,3 +28,5 @@ docker exec -it ansible bash
 ```sh
 docker exec -it --user root ansible bash
 ```
+
+![Pull and run the container](https://github.com/pixelchrome/files/raw/master/images/ntap_ansible_demo/01_ansible_container.gif)
