@@ -5,18 +5,19 @@ ENV LANG="en_US.UTF-8" \
     LANGUAGE="en_US:en" \
     LC_ALL="en_US.UTF-8"
 
-RUN yum -y update && yum clean all && yum -y install epel-release && yum install -y python-pip git vim sudo
-RUN pip install --upgrade pip
-RUN pip install ansible
-RUN pip install netapp-lib solidfire-sdk-python pysphere
+RUN yum -y update && yum clean all && yum -y install epel-release && yum install -y python36-pip git vim sudo
+RUN pip3.6 install --upgrade pip
+RUN pip3 install --upgrade pip
+RUN pip3 install ansible
+RUN pip3 install netapp-lib solidfire-sdk-python pysphere
 
 RUN mkdir /root/ansible-devel \
     && cd /root/ansible-devel \
     && git clone https://github.com/ansible/ansible.git /root/ansible-devel \
-    && cp -aRv /root/ansible-devel/lib/ansible/module_utils/netapp* /usr/lib/python2.7/site-packages/ansible/module_utils \
-    && cp -aRv /root/ansible-devel/lib/ansible/modules/storage/netapp/* /usr/lib/python2.7/site-packages/ansible/modules/storage/netapp/
+    && cp -aRv /root/ansible-devel/lib/ansible/module_utils/netapp* /usr/local/lib/python3.6/site-packages/ansible/module_utils \
+    && cp -aRv /root/ansible-devel/lib/ansible/modules/storage/netapp/* /usr/local/lib/python3.6/site-packages/ansible/modules/storage/netapp/
 
-RUN pip install ansible --upgrade
+RUN pip3 install ansible --upgrade
 
 RUN groupadd ansible
 RUN useradd --create-home --shell /bin/bash -g ansible -G wheel ansible
