@@ -1,4 +1,8 @@
 .README.md
 dev
 dev/*
+deprecated
+deprecated/*
 .vscode
+.vscode/*
+.DS_Store
